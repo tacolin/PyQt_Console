@@ -4,6 +4,7 @@ from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 
 from MyTabWidget import *
+from MyMenuBar import *
 
 
 try:
@@ -32,6 +33,10 @@ class MyWindow(QMainWindow):
     layout = QVBoxLayout(widget)
     tabWidget = MyTabWidget(widget)
     layout.addWidget(tabWidget)
+
+    menuBar = MyMenuBar(self)
+    self.setMenuBar(menuBar)
+
 
 
 if __name__ == '__main__':

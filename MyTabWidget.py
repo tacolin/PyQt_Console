@@ -23,5 +23,10 @@ class MyTabWidget(QTabWidget):
   def __init__(self,parent=None):
     super(MyTabWidget,self).__init__(parent)    
 
-    tab = MyTextBrowser(self)
-    self.addTab(tab, _fromUtf8('測試用Tab'))
+    tab1 = MyTextBrowser(self)
+    self.addTab(tab1, _fromUtf8('測試用Tab1'))
+    tab2 = MyTextBrowser(self)
+    self.addTab(tab2, _fromUtf8('測試用Tab2'))
+
+    self.setMovable(True)
+    self.setTabsClosable(True)  

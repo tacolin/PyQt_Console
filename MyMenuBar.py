@@ -1,7 +1,8 @@
-﻿ # -*- coding: utf-8 -*-
+ # -*- coding: utf-8 -*-
 
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
+
 
 try:
   _fromUtf8 = QString.fromUtf8
@@ -17,14 +18,7 @@ except AttributeError:
   def _translate(context, text, disambig):
     return QApplication.translate(context, text, disambig)
 
-class MyTextBrowser(QTextBrowser):
+class MyMenuBar(QMenuBar):
   def __init__(self,parent):
-    super(MyTextBrowser,self).__init__(parent)
-
-  def event(self,ev):
-    if ev.type() == QEvent.KeyPress:
-      print format(ev.key(),'02x')
-      if ev.key() == Qt.Key_Tab:
-        return True # 把 tab 的 key press event 攔下來
-
-    return super(MyTextBrowser,self).event(ev)
+    super(MyMenuBar,self).__init__(parent)    
+    self.fileMenu = self.addMenu(_fromUtf8('檔案(&F)'))
