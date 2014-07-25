@@ -25,7 +25,19 @@ class MyWindow(QMainWindow):
     self.addToolBar(toolBar)
 
     statusBar = MyStatusBar(self)
-    self.setStatusBar(statusBar)
+    self.setStatusBar(statusBar)  
+
+    quitShortcut = QShortcut(QKeySequence('Ctrl+Q'),self)    
+    quitShortcut.activated.connect(self.closeWindowOnly)
+
+  @pyqtSlot()
+  def myClose(self):
+    print 'close MyWindow'
+
+  @pyqtSlot()
+  def closeWindowOnly(self):
+    print 'close window only'
+    self.close()
 
 
 if __name__ == '__main__':
@@ -35,8 +47,9 @@ if __name__ == '__main__':
   signal.signal(signal.SIGINT, signal.SIG_DFL)
 
   app = QApplication(sys.argv)
+  win = MyWindow() 
+  app.aboutToQuit.connect(win.myClose)
 
-  win = MyWindow()
   win.show()
 
   sys.exit( app.exec_() )

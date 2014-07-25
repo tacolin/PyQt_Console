@@ -30,7 +30,6 @@ class MyTabWidget(QTabWidget):
   def closeTab(self,tabIndex):    
     if tabIndex < 0: # tabIndex 最小是 0
       return
-
     target = self.widget(tabIndex)
     self.removeTab(tabIndex)    
     target.myClose() # 自己包過的 tab 內 widget，都要有一個 myClose 方法
@@ -41,5 +40,15 @@ class MyTabWidget(QTabWidget):
     if tabIndex >= 0: # tabIndex 最小是 0
       self.closeTab(tabIndex)
 
-  def keyPressEvent(self,ev):
-    print '[tabWidget] key = {0}'.format(ev.key())
+  def event(self,ev):
+    if ev.type() == QEvent.KeyPress:
+      if (ev.modifiers() & Qt.ControlModifier) and (Qt.Key_1 <= ev.key() <= Qt.Key_9) :
+        print '[tabWidget] ctrl + 1~9'
+      elif (ev.modifiers() & Qt.AltModifier) and (Qt.Key_1 <= ev.key() <= Qt.Key_9) :
+        print '[tabWidget] alt + 1~9'
+      elif (ev.modifiers() & Qt.ControlModifier) and (ev.key() == Qt.Key_PageUp or ev.key() == Qt.Key_PageDown) :
+        print '[tabWidget] ctrl + page up/down'
+      elif (ev.modifiers() & Qt.AltModifier) and (ev.key() == Qt.Key_PageUp or ev.key() == Qt.Key_PageDown) :
+        print '[tabWidget] alt + page up/down'
+
+    return super(MyTabWidget,self).event(ev)

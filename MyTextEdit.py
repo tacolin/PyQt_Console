@@ -15,7 +15,12 @@ class MyTextEdit(QTextEdit):
   def myClose(self):
     self.deleteLater()
 
-  def keyPressEvent(self,ev):
-    print '[textEdit] key = {0}'.format(ev.key())
+  def event(self,ev):
+    if ev.type() == QEvent.KeyPress:
+      print '[textEdit 2] key = {0}'.format(ev.key())
+      if ev.key() == Qt.Key_Tab and ev.modifiers() == Qt.NoModifier:
+        # 把 單純 tab 鍵的 event 截下來
+        print 'pure tab catched'
+        return True
 
-    # super(MyTextEdit,self).keyPressEvent(ev)
+    return super(MyTextEdit,self).event(ev)
