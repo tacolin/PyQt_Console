@@ -4,8 +4,8 @@ from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 
 from MyTabWidget import *
-# from MyMenuBar import *
 from MyToolBar import *
+from MyStatusBar import *
 from MyString import *
 
 class MyWindow(QMainWindow):
@@ -21,10 +21,11 @@ class MyWindow(QMainWindow):
     tabWidget = MyTabWidget(widget)
     layout.addWidget(tabWidget)
 
-    # menuBar = MyMenuBar(self)
-    # self.setMenuBar(menuBar)
     toolBar = MyToolBar(self)
     self.addToolBar(toolBar)
+
+    statusBar = MyStatusBar(self)
+    self.setStatusBar(statusBar)
 
 
 if __name__ == '__main__':
