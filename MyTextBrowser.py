@@ -1,21 +1,7 @@
-﻿ # -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
-
-try:
-  _fromUtf8 = QString.fromUtf8
-except AttributeError:
-  def _fromUtf8(s):
-    return s
-
-try:
-  _encoding = QApplication.UnicodeUTF8
-  def _translate(context, text, disambig):
-    return QApplication.translate(context, text, disambig, _encoding)
-except AttributeError:
-  def _translate(context, text, disambig):
-    return QApplication.translate(context, text, disambig)
 
 class MyTextBrowser(QTextBrowser):
   def __init__(self,parent):
@@ -24,7 +10,10 @@ class MyTextBrowser(QTextBrowser):
   def event(self,ev):
     if ev.type() == QEvent.KeyPress:
       print format(ev.key(),'02x')
-      if ev.key() == Qt.Key_Tab:
-        return True # 把 tab 的 key press event 攔下來
+      if ev.key() == Qt.Key_Tab and ev.modifiers() == Qt.NoModifier:
+        # 把單獨 tab 的 key press event 攔下來
+        # 但像 alt + tab, ctrl + tab 要放行
+        print 'tab get'
+        return True 
 
     return super(MyTextBrowser,self).event(ev)
