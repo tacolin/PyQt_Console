@@ -5,9 +5,6 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 
 
-from MyString import *
-
-
 class MyToolBar(QToolBar):
     def __init__(self, parent=None):
         super(MyToolBar, self).__init__(parent)

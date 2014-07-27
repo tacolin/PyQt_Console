@@ -7,14 +7,13 @@ from PyQt5.QtWidgets import *
 from MyTabWidget import *
 from MyToolBar import *
 from MyStatusBar import *
-from MyString import *
 
 
 class MyWindow(QMainWindow):
     def __init__(self):
         super(MyWindow, self).__init__()
         self.resize(800, 600)
-        self.setWindowTitle(MyString.toUtf8('Tacolin的視窗'))
+        self.setWindowTitle('Tacolin的視窗')
 
         widget = QWidget(self)
         self.setCentralWidget(widget)

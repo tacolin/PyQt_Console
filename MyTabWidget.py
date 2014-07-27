@@ -4,10 +4,8 @@ from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 
-
 from MyTextBrowser import *
 from MyTextEdit import *
-from MyString import *
 
 
 class MyTabWidget(QTabWidget):
@@ -15,9 +13,9 @@ class MyTabWidget(QTabWidget):
         super(MyTabWidget, self).__init__(parent)
 
         tab1 = MyTextEdit(self)
-        self.addTab(tab1, MyString.toUtf8('測試用Tab1'))
+        self.addTab(tab1, '測試用Tab1')
         tab2 = MyTextEdit(self)
-        self.addTab(tab2, MyString.toUtf8('測試用Tab2'))
+        self.addTab(tab2, '測試用Tab2')
 
         self.setMovable(True)
 

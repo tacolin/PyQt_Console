@@ -5,7 +5,6 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 
 
-
 class MyTextBrowser(QTextBrowser):
     def __init__(self, parent):
         super(MyTextBrowser, self).__init__(parent)

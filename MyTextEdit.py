@@ -5,9 +5,6 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 
 
-from MyString import *
-
-
 class MyTextEdit(QTextEdit):
     def __init__(self, parent=None):
         super(MyTextEdit, self).__init__(parent)
