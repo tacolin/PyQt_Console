@@ -70,14 +70,19 @@ if __name__ == '__main__':
     signal.signal(signal.SIGINT, signal.SIG_DFL)
     app = QApplication(sys.argv)
 
+    longMessage = ('當格數需要跨越多行時，就需要額外提供三個參數，例如 display'
+                   '當在第四橫列第一直行，因此第二個參數為 3，第三個參數為 0，'
+                   '第四個參數為垂直延伸格數，此處為 1，第五個參數為水平延伸格'
+                   '數，此處為 7')
+
     print('INFO')
-    MyNotifyDialog.info('當格數需要跨越多行時，就需要額外提供三個參數，例如 display 在第四橫列第一直行，因此第二個參數為 3，第三個參數為 0 ，第四個參數為垂直延伸格數，此處為 1 ，第五個參數為水平延伸格數，此處為 7')
+    MyNotifyDialog.info(longMessage)
     print('WARN')
-    MyNotifyDialog.warn('當格數需要跨越多行時，就需要額外提供三個參數，例如 display 在第四橫列第一直行，因此第二個參數為 3，第三個參數為 0 ，第四個參數為垂直延伸格數，此處為 1 ，第五個參數為水平延伸格數，此處為 7')
+    MyNotifyDialog.warn(longMessage)
     print('ERROR')
-    MyNotifyDialog.error('當格數需要跨越多行時，就需要額外提供三個參數，例如 display 在第四橫列第一直行，因此第二個參數為 3 ，第三個參數為 0 ，第四個參數為垂直延伸格數，此處為 1 ，第五個參數為水平延伸格數，此處為 7')
+    MyNotifyDialog.error(longMessage)
     print('CONFIRM')
-    ret = MyNotifyDialog.confirm('當格數需要跨越多行時，就需要額外提供三個參數，例如 display 在第四橫列第一直行，因此第二個參數為 3 ，第三個參數為 0 ，第四個參數為垂直延伸格數，此處為 1 ，第五個參數為水平延伸格數，此處為 7')
+    ret = MyNotifyDialog.confirm(longMessage)
     print(ret)
-    ret = MyNotifyDialog.confirm('當格數需要跨越多行時，就需要額外提供三個參數，例如 display 在第四橫列第一直行，因此第二個參數為 3 ，第三個參數為 0 ，第四個參數為垂直延伸格數，此處為 1 ，第五個參數為水平延伸格數，此處為 7')
+    ret = MyNotifyDialog.confirm(longMessage)
     print(ret)
