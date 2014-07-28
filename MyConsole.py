@@ -7,9 +7,6 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 
 
-from Mystring import *
-
-
 class MyRecvEnd(Exception):
     def __init__(self):
         super(MyRecvEnd, self).__init__()
@@ -43,7 +40,7 @@ class MyRecv(QObject):
                 else:
                     restBytes = ''
                 self.notifyRecvData(firstByte, restBytes)
-                self.buf = ''.join([self.buf, f irstByte, restBytes])
+                self.buf = ''.join([self.buf, firstByte, restBytes])
                 self.fitBuf()
         except MyRecvEnd:
             self.isTerminated = True

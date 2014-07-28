@@ -54,11 +54,6 @@ class MyWindow(QMainWindow):
         else:
             ev.ignore()
 
-    # @pyqtSlot()
-    # def closeWindowOnly(self):
-    #     print('close window only')
-    #     self.close()
-
 
 if __name__ == '__main__':
 
