@@ -29,16 +29,35 @@ class MyWindow(QMainWindow):
         self.setStatusBar(statusBar)
 
         quitShortcut = QShortcut(QKeySequence('Ctrl+Q'), self)
-        quitShortcut.activated.connect(self.closeWindowOnly)
+        quitShortcut.activated.connect(self.triggerClose)
 
     @pyqtSlot()
     def myClose(self):
-        print('close MyWindow')
+        ''' 真正的結束程序 '''
+
+        print("做一些必要的結束程序")
 
     @pyqtSlot()
-    def closeWindowOnly(self):
-        print('close window only')
+    def triggerClose(self):
+        ''' 只是觸發一個 close event 而已 '''
+
         self.close()
+
+    @pyqtSlot()
+    def closeEvent(self, ev):
+        ''' 確認之後只會把視窗關閉  但真正的myClose會等到app quit才做 '''
+
+        confirm = QMessageBox.question(self, '確認',
+                                       '確定要關閉整個程式嗎？')
+        if confirm == QMessageBox.Yes:
+            ev.accept()
+        else:
+            ev.ignore()
+
+    # @pyqtSlot()
+    # def closeWindowOnly(self):
+    #     print('close window only')
+    #     self.close()
 
 
 if __name__ == '__main__':

@@ -32,6 +32,11 @@ class MyTabWidget(QTabWidget):
         # tabIndex 最小是 0
         if tabIndex < 0:
             return
+
+        confirm = QMessageBox.question(self, '確認', '真的要關閉這個tab嗎？')
+        if confirm == QMessageBox.No:
+            return
+
         target = self.widget(tabIndex)
         self.removeTab(tabIndex)
         # 自己包過的 tab 內 widget，都要有一個 myClose 方法
